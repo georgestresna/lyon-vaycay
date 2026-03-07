@@ -1,0 +1,4 @@
+*.deb
+*.deb.1
+__pycache__/*
+venv/*
