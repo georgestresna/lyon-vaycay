@@ -1,0 +1,56 @@
+[
+    {
+        "city": 0,
+        "week": 0,
+        "k_ind": 0,
+        "l_ind": 17
+    },
+    {
+        "city": 1,
+        "week": 1,
+        "k_ind": 0,
+        "l_ind": 11
+    },
+    {
+        "city": 2,
+        "week": 1,
+        "k_ind": 0,
+        "l_ind": 8
+    },
+    {
+        "city": 3,
+        "week": 0,
+        "k_ind": 0,
+        "l_ind": 7
+    },
+    {
+        "city": 4,
+        "week": 0,
+        "k_ind": 0,
+        "l_ind": 5
+    },
+    {
+        "city": 5,
+        "week": 0,
+        "k_ind": 0,
+        "l_ind": 9
+    },
+    {
+        "city": 6,
+        "week": 2,
+        "k_ind": 0,
+        "l_ind": 14
+    },
+    {
+        "city": 7,
+        "week": 0,
+        "k_ind": 0,
+        "l_ind": 7
+    },
+    {
+        "city": 8,
+        "week": 1,
+        "k_ind": 0,
+        "l_ind": 7
+    }
+]
