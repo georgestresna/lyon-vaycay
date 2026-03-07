@@ -17,10 +17,10 @@ It then spits out the top-scored trips and displays them on a clean web dashboar
 
 ### The Tech Stack
 
-* **Backend & Scraping:** Python (BeautifulSoup / Selenium)
+* **Backend & Scraping:** Python (Selenium)
 * **Data Structure:** Flat JSON / MongoDB (to store the 3D Matrix data)
 * **Web Server:** FastAPI & Uvicorn
-* **Frontend:** HTML, CSS, and Jinja2 Templates
+* **Frontend:** to be continues
 
 ---
 *Note: Still tweaking the web server and dynamic HTML rendering. More updates coming soon!*
