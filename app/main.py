@@ -1,12 +1,17 @@
 import json
+import os
 
-from flixbus import get_deeplink_flix
-from time_mngmt import next4weekends, timedif, final_dates
-from find_id import find_flixbus_uuid
+from app.flixbus import get_deeplink_flix
+from app.time_mngmt import next4weekends, timedif, final_dates
+from app.find_id import find_flixbus_uuid
 # from db import setup_cities_data
-from mgmt import scoring_formula_price, scoring_formula_time
-from scrapping_logic import init_driver, trip_details
+from app.mgmt import scoring_formula_price, scoring_formula_time
+from app.scrapping_logic import init_driver, trip_details
 
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(CURRENT_DIR)
+CITIES_FILE = os.path.join(PROJECT_ROOT, "json_files", "cities.json")
+TRIPS_FILE = os.path.join(PROJECT_ROOT, "json_files", "trips_rated.json")
 
 def compile_trips(driver, weekends, cities_info, departure_city):
     indicator_dic =[]
@@ -89,7 +94,7 @@ def __init__():
     ####
     # my_col = setup_cities_data()
     # cities_info = list(my_col.find())
-    with open("json_files/cities.json", "r") as file:
+    with open(CITIES_FILE, "r") as file:
         cities_info = json.load(file)
     departure_city = cities_info[0]
     print("[*] Departure city set")
@@ -101,7 +106,7 @@ def __init__():
     trips_rated = score_trips(trips)
     print("[*] Scored trips | Final version of data")
 
-    with open("/json_files/trips_rated.json", "w") as file:
+    with open(TRIPS_FILE, "w") as file:
         json.dump(trips_rated, file, indent=4)
     print("[*] Saved final data to JSON")
 

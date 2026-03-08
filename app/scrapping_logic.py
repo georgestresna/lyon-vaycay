@@ -8,7 +8,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from time_mngmt import str2hour
+from app.time_mngmt import str2hour
 
 def init_driver():
     options = Options()
@@ -21,7 +21,10 @@ def init_driver():
     options.add_argument("--disable-blink-features=AutomationControlled")
     options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
 
-    driver = webdriver.Chrome(options=options)
+    driver = webdriver.Remote(
+        command_executor='http://localhost:4444/wd/hub', 
+        options=options
+    )
     return driver
 
 def trip_details(driver, url):

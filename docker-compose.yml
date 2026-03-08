@@ -2,11 +2,33 @@ version: '3.8'
 services:
   selenium:
     image: selenium/standalone-chrome
-    container_name: scraper
+    container_name: selenium_instance
     ports:
       - "4444:4444"
       - "7900:7900"
     shm_size: 2gb
+    profiles: [active_scraping]
+
+  api:
+    build: .
+    container_name: web_fast_api
+    command: uvicorn web.web:app --host 0.0.0.0 --port 8000 --reload
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+
+  scraper:
+    build: .
+    container_name: scraper
+    command: python3 app/main.py
+    volumes:
+      - .:/app
+    depends_on:
+      - selenium
+    profiles: [active_scraping]
+
+
   # mongodb:
   #   image: mongo
   #   restart: always
@@ -16,5 +38,4 @@ services:
   #   volumes:
   #     - mongo_data:/data/db
 
-volumes:
-  mongo_data:
+ #docker compose --profile active_scraping up
