@@ -1,7 +1,3 @@
-import json
-
-with open("trips_rated.json", "r") as file:
-    data = json.load(file)
 
 def to_display(data):
     best_trips = []
@@ -38,10 +34,3 @@ def final_data(data, trimmed):
         best_trip_details.append(data[trip["week"]][trip["city"]][trip["k_ind"]][trip["l_ind"]])
     return best_trip_details
 
-trimmed = to_display(data)
-
-with open("trimmed_data.json", "w") as file:
-    json.dump(trimmed, file, indent=4)
-
-with open("fin_data.json", "w") as file:
-    json.dump(final_data(data, trimmed), file, indent=4)

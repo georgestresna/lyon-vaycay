@@ -1,4 +1,5 @@
 from pymongo import MongoClient
+import json
 
 def setup_cities_data():
 
@@ -21,10 +22,12 @@ def enterData(mycol):
     print(x.inserted_id)
 
 def check(mycol):
-    x =mycol.find()
-    print(list(x))
+    x = mycol.find({}, {"_id": 0})
+    return list(x)
 
-# check(setup())
+with open("json_files/cities.json", "w") as file:
+    json.dump(check(setup_cities_data()), file, indent=4)
+
 
 def deletion(mycol):
     x = mycol.delete_many({'city_name': "Lyon"})

@@ -2,3 +2,4 @@
 *.deb.1
 __pycache__/*
 venv/*
+app/__pycache__/*

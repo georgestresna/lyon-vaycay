@@ -1,0 +1,52 @@
+[
+    {
+        "city_name": "Lyon",
+        "city_uuid": "40df89c1-8646-11e6-9066-549f350fcb0c",
+        "booking_id": "-1448468"
+    },
+    {
+        "city_name": "Paris",
+        "city_uuid": "40de8964-8646-11e6-9066-549f350fcb0c",
+        "booking_id": "-1456928"
+    },
+    {
+        "city_name": "Annecy",
+        "city_uuid": "40dfe930-8646-11e6-9066-549f350fcb0c",
+        "booking_id": "-1407760"
+    },
+    {
+        "city_name": "Marseille",
+        "city_uuid": "40df8e99-8646-11e6-9066-549f350fcb0c",
+        "booking_id": "-1449947"
+    },
+    {
+        "city_name": "Chamb%C3%A9ry",
+        "city_uuid": "40df5fc1-8646-11e6-9066-549f350fcb0c",
+        "booking_id": "-1417924"
+    },
+    {
+        "city_name": "Montpellier",
+        "city_uuid": "40df980f-8646-11e6-9066-549f350fcb0c",
+        "booking_id": "-1453260"
+    },
+    {
+        "city_name": "Gen%C3%A8ve",
+        "city_uuid": "40df585b-8646-11e6-9066-549f350fcb0c",
+        "booking_id": "-2552151"
+    },
+    {
+        "city_name": "Turin",
+        "city_uuid": "40deee02-8646-11e6-9066-549f350fcb0c",
+        "booking_id": "-130938"
+    },
+    {
+        "city_name": "Barcelone",
+        "city_uuid": "40e086ed-8646-11e6-9066-549f350fcb0c",
+        "booking_id": "-372490"
+    },
+    {
+        "city_name": "Nice",
+        "city_uuid": "40e13a46-8646-11e6-9066-549f350fcb0c",
+        "booking_id": "-1454990"
+    }
+]
