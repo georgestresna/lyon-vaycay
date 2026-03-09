@@ -1,0 +1,30 @@
+stages:
+  - deploy
+
+deploy_to_production:
+  stage: deploy
+  # We use a tiny, lightweight Linux image just to run this script
+  image: alpine:latest 
+  
+  before_script:
+    # 1. Install SSH tools on the GitLab runner
+    - apk add --no-cache openssh-client rsync
+    # 2. Start the SSH agent and load your secret private key
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    # 3. Disable the "Are you sure you want to connect?" prompt so the robot doesn't get stuck
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+
+  script:
+    # 4. Create a folder on your AWS server
+    - ssh ubuntu@$EC2_IP_ADDRESS "mkdir -p /home/ubuntu/lyonvaycay"
+    # 5. Copy all your files from GitLab directly to the AWS server (ignoring .git to save space)
+    - rsync -avz --exclude='.git' -e ssh ./ ubuntu@$EC2_IP_ADDRESS:/home/ubuntu/lyonvaycay/
+    # 6. Log into the server, go to the folder, and restart the Docker containers!
+    - ssh ubuntu@$EC2_IP_ADDRESS "cd /home/ubuntu/lyonvaycay && docker compose -f docker-compose.prod.yml up --build -d"
+    
+  # Only trigger this robot when you push to the 'main' branch
+  only:
+    - main

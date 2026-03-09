@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  selenium:
+    image: selenium/standalone-chrome
+    container_name: selenium_instance
+    ports:
+      - "4444:4444"
+    shm_size: 2gb
+    profiles: [active_scraping]
+
+  api:
+    build: .
+    container_name: web_fast_api
+    command: uvicorn web.web:app --host 0.0.0.0 --port 80
+    ports:
+      - "80:80"
+    volumes:
+      - shared_json:/app/json_files
+
+  scraper:
+    build: .
+    container_name: scraper
+    command: python3 app/main.py
+    volumes:
+      - shared_json:/app/json_files
+    depends_on:
+      - selenium
+    profiles: [active_scraping]
+
+volumes:
+  shared_json:
