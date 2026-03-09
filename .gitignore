@@ -1,5 +1,14 @@
 *.deb
 *.deb.1
-__pycache__/*
-venv/*
+__pycache__/
+venv/
 app/__pycache__/*
+amazon.txt
+awscliv2.zip
+
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+.terraform.lock.hcl
+
+aws
